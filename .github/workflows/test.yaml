@@ -24,6 +24,8 @@ jobs:
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@latest
+        with:
+          terraform_version: 2.0.3
         
       - run: |
           terraform init
