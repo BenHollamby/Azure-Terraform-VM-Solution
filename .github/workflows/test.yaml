@@ -22,9 +22,9 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Confirm Connection
-        uses: azure/CLI@v1
-        with:
-            azcliversion: latest
-            inlineScript: |
-                az account show
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@latest
+        
+      - run: |
+          terraform init
+          terraform plan
