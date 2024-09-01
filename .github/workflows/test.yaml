@@ -27,6 +27,10 @@ jobs:
 
       - name: Terraform Linting
         uses: actionshub/terraform-lint@main
+
+      - name: Terraform Format
+        if: steps.lint.outcome == 'failure'
+        run: terraform fmt -recursive
       
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
